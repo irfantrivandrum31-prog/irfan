@@ -1,12 +1,21 @@
-name: Hello World CI # The name of your workflow, shown in the "Actions" tab
+# When the workflow should run
+on:
+push:
 
-on: [push] # The event that triggers the workflow, in this case, any push
+branches: [ &quot;main&quot; ]
+pull_request:
+branches: [ &quot;main&quot; ]
 
-jobs: # Groups together all the jobs that run in the workflow
-  build: # The name of the job
-    runs-on: ubuntu-latest # The type of virtual machine runner the job will run on
-    steps: # A sequence of tasks that will be executed as part of the job
-      - uses: actions/checkout@v4 # Action to check out your repository code
-      - name: Run a one-line script # A descriptive name for the step
-        run: echo Hello, world! # The command to run in the runner's shell
+# What jobs to run
+jobs:
+build:
+runs-on:ubuntu-latest# Environment to run in
 
+steps:
+# Step 1: Checkout the code
+-name:Checkoutrepository
+uses:actions/checkout@v4
+
+# Step 2: Run a simple command
+-name:Displaymessage
+run:echo&quot; GitHub Actions workflow is running successfully!&quot;
